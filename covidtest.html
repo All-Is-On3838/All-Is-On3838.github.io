@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Allison Portfolio: COVID Test Site Question</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">COVID Test Site Question</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="covidtest.html" class="active">COVID Test Site Question</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main" class="wrapper">
+						<div class="inner">
+							<h1 class="major">Problem Introduction</h1>
+							<h3>Title</h3>
+							<p>Does presence of testing sites influence testing numbers?</p>
+							<h3>Industry Focus</h3>
+							<p>COVID Testing</p>
+							<h3>Problem Statement</h3>
+							<p>Deep dive into data analytics to show value of increasing free testing sites.</p>
+							<h3>Business Use Case</h3>
+								<ol>
+									<li>Does establishment of testing sites increase testing in that community?</li>
+								</ol>
+							<h3>Goals/ metrics</h3>
+								<ul>
+									<li>Find the correlation between presence of neighborhood testing sites and testing numbers in the surrounding counties.</li>
+									<li>Isolate testing data for 4 weeks before a popup site is established and 4 weeks after.</li>
+								</ul>
+							<h3>Deliverables</h3>
+								<ul>
+									<li>A Jupyter notebook outlining findings and recommendations.</li>
+								</ul>
+							<h3>Dataset list</h3>
+								<ul>
+									<li>Outbreak numbers by region from MDHSS.gov</li>
+									<li>New press releases from MDHSS.gov and other news sites to gather popup site dates and locations</li>
+								</ul>
+							<h3>Websites to scrape the data</h3>	
+								<ul>
+									<li><a href ='https://www.michigan.gov/coronavirus/-/media/Project/Websites/coronavirus/Michigan-Data/06-21-2022/Complete-outbreak-numbers-for-website-6-21-2022.xlsx?rev=1569f352dc81415c8c1b9364f0c1ba89&hash=860447B0B56DA614CECAA341962811CC'>Outbreak numbers By Region</a></li>
+									<li><a href = 'https://www.michigan.gov/mdhhs/inside-mdhhs/newsroom#tagsearch=35c6dfa52dd946b7936a7b72e6936017%20Coronavirus&q=coronavirus&e=0&article%20date=20200301|20220630'>MDHSS New Press Releases</a></li>
+								</ul>
+							<h1>What I Learned</h1>
+							<p>For this project, cleaning and isolating the data was pretty forward. Where I struggled was with gathering data and formatting my data for visualizing.<br/>
+							<br/>
+							A key component of my data comprises dates COVID testing sites are open. There is no public dataset of this data. I had to figure out a way to isolate this on my own. I started by looking at news press releases from MDHSS; this pointed me toward three websites of available testing sites. I was going to use this data to accurately assess testing numbers based on available testing sites, but I couldn't look at any of the data because MDHSS no longer used those sites. Even using archival sites like waybackmachine yielded nothing. s MDHSS has used to provide public data of avaliable testing sites. I was going to access these databases to accurately assess testing numbers based on available testing sites, but I couldn't look at any of the data because MDHSS no longer used those sites. Even using archival sites like waybackmachine yielded nothing.<br/>
+							<br/>
+							From here, I shifted strategies and used the news press releases to approximate when and where sites opened. I quickly realized that the press releases left significant holes in the timeline. I learned there were 22 "neighborhood sites" that opened over the last two years. These were sites that provided no-cost testing, so I thought I could compare no-cost testing to pharmacy testing. This would change my question to investigate whether or not it was worth it for MDHSS to continue funding neighborhood sites. However, I was unable to find significant pharmacy data to compare to neighborhood sites.<br/>
+							<br/>
+							At this point I went back to my news press release idea, and expanded my news search to local news stations. This produced promising data. I was able to isolate several counties that opened limited pop up sites. This allowed me to investigate my original question of: Does establishing a COVID Testing Site increase testing?<br/>
+							<br/>
+							My other problem was with formatting my data for visualization. In order to create dataframes that matched a single county to multiple counties, I choose to aggregate data. The return from this function creates a multi-index table but the matplotlib line chart function only takes one dimensional data. I learned a lot about indexing and eventually ended up using a join statement to rename the indexes, essentially flattening it.</p>
+							<h1>Conclusions and Recommendations</h1>
+							<img src="images/covidtestchart.png" alt="" />
+							<img src="images/covidteststat.png" alt="" />
+							<p>H0 => µ1 = µ2 (population mean of Bay County is equal to Surrounding Counties)<br/> 
+								HA => µ1 ≠µ2 (population mean of Bay County is different from Surrounding Counties)<br/> 
+								Since the p-value (0.00001) is less than alpha = 0.05 so we reject the null hypothesis of the test. We have sufficient evidence to say that the mean of total test numbers between the two data groups is significantly different.</p>						
+							<p>Bay County has significantly more tests on average than the surrounding counties. However, one must note that this is true before and after pop up sites are set up. Therefore, there is something beside pop up site presence that increases testing numbers.</p>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
