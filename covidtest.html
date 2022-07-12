@@ -31,53 +31,49 @@
 				<!-- Main -->
 					<section id="main" class="wrapper">
 						<div class="inner">
-							<h1 class="major">Problem Introduction</h1>
-							<h3>Title</h3>
-							<p>Does presence of testing sites influence testing numbers?</p>
-							<h3>Industry Focus</h3>
-							<p>COVID Testing</p>
-							<h3>Problem Statement</h3>
-							<p>Deep dive into data analytics to show value of increasing free testing sites.</p>
-							<h3>Business Use Case</h3>
-								<ol>
-									<li>Does establishment of testing sites increase testing in that community?</li>
-								</ol>
-							<h3>Goals/ metrics</h3>
-								<ul>
-									<li>Find the correlation between presence of neighborhood testing sites and testing numbers in the surrounding counties.</li>
-									<li>Isolate testing data for 4 weeks before a popup site is established and 4 weeks after.</li>
-								</ul>
-							<h3>Deliverables</h3>
-								<ul>
-									<li>A Jupyter notebook outlining findings and recommendations.</li>
-								</ul>
-							<h3>Dataset list</h3>
-								<ul>
-									<li>Outbreak numbers by region from MDHSS.gov</li>
-									<li>New press releases from MDHSS.gov and other news sites to gather popup site dates and locations</li>
-								</ul>
+							<p>At the time of writing this, I work as a site manager on a COVID testing project. The Michigan Health Department (MDHSS), has been very active in combating COVID-19 throughout the pandemic. I am but one part of such a project and the time for that project is coming to an end. We have established testing sites in pharmacies, urgent cares, and now the state has rolled out an at-home testing program. The space (and funding!) for pop-up sites are dwindling. Hence, my interest in this project.<br/>
+								<blockquote>Does the presence of pop-up testing sites increase testing numbers? Was this a useful program for my state? Is it worth it to keep funding my job?</blockquote>
+								I am trying to answer these questions here. Now, it goes without saying that I have a major bias toward this question. Normally I would do a lot of introspection on whether I can be involved with investigating this issue, whether my background or beliefs will influence the outcomes, and whether it would be better for someone else to take my stead. This is just a fun project to test my newly learned skills, so I am willfully ignoring any potential experimenter bias.<br/>
+								<br/>I make only one promise with this project: that an answer will be had. My goal here wasn’t to find and present an astonishingly convincing narrative to save my job or even to exhibit brilliant business acumen. I understand that I am a novice in the field of data analysis. However, this was fun and I learned a lot over this frustrating week. <br/>
+							</p>
 							<h3>Websites to scrape the data</h3>	
 								<ul>
 									<li><a href ='https://www.michigan.gov/coronavirus/-/media/Project/Websites/coronavirus/Michigan-Data/06-21-2022/Complete-outbreak-numbers-for-website-6-21-2022.xlsx?rev=1569f352dc81415c8c1b9364f0c1ba89&hash=860447B0B56DA614CECAA341962811CC'>Outbreak numbers By Region</a></li>
-									<li><a href = 'https://www.michigan.gov/mdhhs/inside-mdhhs/newsroom#tagsearch=35c6dfa52dd946b7936a7b72e6936017%20Coronavirus&q=coronavirus&e=0&article%20date=20200301|20220630'>MDHSS New Press Releases</a></li>
+									<li><a href ='https://www.michigan.gov/mdhhs/inside-mdhhs/newsroom#tagsearch=35c6dfa52dd946b7936a7b72e6936017%20Coronavirus&q=coronavirus&e=0&article%20date=20200301|20220630'>MDHSS New Press Releases</a></li>
+									<li><a href ='https://detroit.cbslocal.com/2021/04/05/heres-a-list-of-pop-up-covid-19-testing-sites-in-michigan-this-week/'>Local News</a>--> You'll see why in a bit!</li>
 								</ul>
-							<h1>What I Learned</h1>
-							<p>For this project, cleaning and isolating the data was pretty forward. Where I struggled was with gathering data and formatting my data for visualizing.<br/>
-							<br/>
-							A key component of my data comprises dates COVID testing sites are open. There is no public dataset of this data. I had to figure out a way to isolate this on my own. I started by looking at news press releases from MDHSS; this pointed me toward three websites of available testing sites. I was going to use this data to accurately assess testing numbers based on available testing sites, but I couldn't look at any of the data because MDHSS no longer used those sites. Even using archival sites like waybackmachine yielded nothing. s MDHSS has used to provide public data of avaliable testing sites. I was going to access these databases to accurately assess testing numbers based on available testing sites, but I couldn't look at any of the data because MDHSS no longer used those sites. Even using archival sites like waybackmachine yielded nothing.<br/>
-							<br/>
-							From here, I shifted strategies and used the news press releases to approximate when and where sites opened. I quickly realized that the press releases left significant holes in the timeline. I learned there were 22 "neighborhood sites" that opened over the last two years. These were sites that provided no-cost testing, so I thought I could compare no-cost testing to pharmacy testing. This would change my question to investigate whether or not it was worth it for MDHSS to continue funding neighborhood sites. However, I was unable to find significant pharmacy data to compare to neighborhood sites.<br/>
-							<br/>
-							At this point I went back to my news press release idea, and expanded my news search to local news stations. This produced promising data. I was able to isolate several counties that opened limited pop up sites. This allowed me to investigate my original question of: Does establishing a COVID Testing Site increase testing?<br/>
-							<br/>
-							My other problem was with formatting my data for visualization. In order to create dataframes that matched a single county to multiple counties, I choose to aggregate data. The return from this function creates a multi-index table but the matplotlib line chart function only takes one dimensional data. I learned a lot about indexing and eventually ended up using a join statement to rename the indexes, essentially flattening it.</p>
-							<h1>Conclusions and Recommendations</h1>
+							<p>I got the idea while perusing the MDHSS covid page for work. I was playing with the COVID dashboard and wondering where the data came from. That was pretty quickly answered when I found links to the public dataset right at the bottom of the page. A quick exploration of the spreadsheet showed that the data were grouped by county, which immediately had me excited about recreating the geomaps on the dashboard. <br/>
+								<br/>Federal Information Processing Standards or FIPS codes are unique county codes for the US, and I just learned about plotly express which allowed the use of FIPS for the creation of easy geomaps. I would show a picture here, but it didn’t turn out well. <br/>
+								<br/>I didn’t know that plotly couldn’t isolate a map by state, so when all my color-coded counties were populated it was just a rainbow Michigan in a sea of grey states. Poetic really.<br/>
+							</p>
+							<img src="images/michiganpride.jpg" alt="" />
+							<h3>The Project</h3>
+							<p>Around this time work was downgrading staffing. It seemed like the project was coming to a close, and when things end one tends to contemplate whether it was all worth it. I had already played with some data, so I was pretty quick to connect my questions of worthiness to the data. I wanted to know if I did something useful, so I sought an answer.</p>
+							<h3>Gathering the Data</h3>
+							<p>A key component of my data comprises dates COVID testing sites are open. There is no public dataset of this data. I had to figure out a way to isolate this on my own. I started by looking at news press releases from MDHSS; this pointed me toward three websites of available testing sites. I was going to use this data to accurately assess testing numbers based on available testing sites, but I couldn't look at any of the data because MDHSS no longer used those sites. Even using archival sites like waybackmachine yielded nothing. MDHSS used to provide public data on available testing sites. I was going to access these databases to accurately assess testing numbers based on available testing sites, but I couldn't look at any of the data because MDHSS no longer used those sites. Even using archival sites like waybackmachine yielded nothing.<br/>
+								<br/>From here, I shifted strategies and used the news press releases to approximate when and where sites opened. I quickly realized that the press releases left significant holes in the timeline. I learned there were 22 "neighborhood sites" that opened over the last two years. These were sites that provided no-cost testing, so I thought I could compare no-cost testing to pharmacy testing. This would change my question to investigate whether or not it was worth it for MDHSS to continue funding neighborhood sites. However, I was unable to find significant pharmacy data to compare to neighborhood sites.<br/>
+								<br/>At this point, I went back to my news press release idea and expanded my news search to local news stations. This produced promising data. I was able to isolate several counties that opened limited pop-up sites. This allowed me to investigate my original question: Does establishing COVID testing sites increase testing?<br/>
+								<br/>Let’s take a small break here to discuss web scraping. One of the issues I brought up was a lack of data. I could have used python to trough through the entirety of the internet for more data. But from an exploratory search, I wasn’t getting much. Web scraping felt like I would have gotten more duplicates of the same information, or even completely unrelated information. While Michigan has been very active about COVID throughout the pandemic, there wasn’t a lot of news covering testing sites opening after the initial few months.<br/>
+							</p>
+							<h3>Cleaning and Vizualization</h3>
+							<p>The public dataset was already pretty clean. There was no missing data, no duplicates, and no major outliers. All that was left was isolating the data I actually needed. I used queries and datetime to do this.<br/>
+								<br/>My other problem was with formatting my data for visualization. To create dataframes that matched a single county to multiple counties, I choose to aggregate the mean, min, and max from total tests performed. The return from this function created a multi-index table. This looked great, but the matplotlib line chart function only takes one-dimensional data. I learned a lot about indexing and eventually ended up using a join statement to rename the indexes, essentially flattening it.<br/>
+								<br/>I made a line chart to compare testing numbers in the county that had pop-up sites to the surrounding counties that did not have pop-up sites. According to the news report I found, Bay county was a county that opened popup sites but none of the surrounding counties of Arenac, Gladwin, Midland, or Saginaw opened one. I made a dataframe that represented the mean, maximum, and minimum of the total number of tests; as well as data for the site type(popup or surrounding) and time frame(before and after popup opening).<br/>
+							</p>
 							<img src="images/covidtestchart.png" alt="" />
+							<p>The chart looks good! Sort of.<br/>
+								<br/>It clearly looks like the popup county has more tests on average than the surrounding counties, meaning opening popup sites is useful. However, I knew while the numbers could look significant I needed to do the math first.
+							</p>				
 							<img src="images/covidteststat.png" alt="" />
-							<p>H0 => µ1 = µ2 (population mean of Bay County is equal to Surrounding Counties)<br/> 
-								HA => µ1 ≠µ2 (population mean of Bay County is different from Surrounding Counties)<br/> 
-								Since the p-value (0.00001) is less than alpha = 0.05 so we reject the null hypothesis of the test. We have sufficient evidence to say that the mean of total test numbers between the two data groups is significantly different.</p>						
-							<p>Bay County has significantly more tests on average than the surrounding counties. However, one must note that this is true before and after pop up sites are set up. Therefore, there is something beside pop up site presence that increases testing numbers.</p>
+							<p>I chose to use a paired independent t-test because I had the means of two groups to compare.<br/> 
+								&emsp;H0 => µ1 = µ2 (population mean of Bay County is equal to Surrounding Counties)<br/> 
+								&emsp;HA => µ1 ≠µ2 (population mean of Bay County is different from Surrounding Counties)<br/> 
+								<br/> Since the p-value (0.00001) is less than alpha = 0.05 so we reject the null hypothesis of the test. We have sufficient evidence to say that the mean of total test numbers between the two data groups is significantly different.</p>						
+							<p>Bay County has significantly more tests on average than the surrounding counties. However, one must note that this is true before and after pop-up sites are set up. Therefore, there is something besides pop-up site presence that increases testing numbers.<br/>
+							</p>
+							<h3>Conclusion</h3>
+							<p>While it was really nice to initially see that the popup county had more tests on average than the surrounding counties, I didn’t see (in my single very small test case) evidence that showed popup sites were the reason for that increase.<br/>
+							<br/>Overall, I’m happy with the outcome of this project. I faced a few roadblocks that were frustrating but fulfilling to overcome. This got me thinking about where data comes from, and how to gather representational data. It also got me thinking about webscraping, which I’m going to explore next!</p>
 						</div>
 					</section>
 
